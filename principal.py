@@ -1,5 +1,6 @@
 ##importacion de librerias
-from modulos import obtener_usuarios, validar_dni,numerales_renglon, validarIngresoNumeroEntero, verificacion_password,tempo
+from modulos import obtener_usuarios, validar_dni,numerales_renglon, validarIngresoNumeroEntero, verificacion_password
+from modulos import tempo, extraccion, deposito
 import time, os
 import getpass
 
@@ -73,15 +74,18 @@ cargando usuarios.''')
         elif opcion == 1:
             numerales_renglon()
             print("Extraccion")
-
+            extraccion(listadodeusuarios,ingreso_dni)    
         elif opcion == 2:
             numerales_renglon()
             print("deposito")
-            
+            deposito(listadodeusuarios,ingreso_dni)   
         elif opcion == 3:
             numerales_renglon()
             print("ver datos")
-            
+            print(f"Su DNI es: {usuario_encontrado['dni']}") 
+            print(f"Su password es: {usuario_encontrado['password']}") 
+            print(f"Su nombre es: {usuario_encontrado['nombre']}") 
+            print(f"Su dinero disponible es: {usuario_encontrado['monto']}") 
         else:
             numerales_renglon()
             print("Elija una opcion correcta")

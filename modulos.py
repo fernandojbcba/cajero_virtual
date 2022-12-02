@@ -53,3 +53,50 @@ def tempo(r):
         print("*" * i)
         time.sleep(5/10)
         os.system("clear")
+def extraccion(usuarios, dni):
+    monto=0
+    for usuario in usuarios:
+        if usuario["dni"] == dni:
+            monto=int(usuario["monto"])
+            print(f"usted dispone de {monto} pesos")
+            extraccion = int(input("ingrese cuanto desea extraer "))
+            usuario["monto"]= str(monto - extraccion)
+            print("su saldo es" , usuario["monto"] )
+            
+# usuario={"dni":usuario[0],"password":usuario[1],"nombre":usuario[2],"monto":usuario[3]}
+    # Grabar en archivo
+    file = open("bd_user.md","w")
+    #    animal {"codigo":999,"especie":"AAAA","edad":99}
+    contenido=[]
+    for usuario in usuarios:
+        linea = f"\n{usuario['dni']},{usuario['password']},{usuario['nombre']},{usuario['monto']}"
+        contenido.append(linea)
+
+# Quitamos el \n inicial para evitar linea en blanco
+    contenido[0] = contenido[0].replace("\n","")
+    file.writelines(contenido)
+    file.close()
+
+def deposito(usuarios, dni):
+    monto=0
+    for usuario in usuarios:
+        if usuario["dni"] == dni:
+            monto=int(usuario["monto"])
+            print(f"usted dispone de {monto} pesos")
+            deposito = int(input("ingrese cuanto desea depositar "))
+            usuario["monto"]= str(monto + deposito)
+            print("su saldo es" , usuario["monto"] )
+            
+# usuario={"dni":usuario[0],"password":usuario[1],"nombre":usuario[2],"monto":usuario[3]}
+    # Grabar en archivo
+    file = open("bd_user.md","w")
+    #    animal {"codigo":999,"especie":"AAAA","edad":99}
+    contenido=[]
+    for usuario in usuarios:
+        linea = f"\n{usuario['dni']},{usuario['password']},{usuario['nombre']},{usuario['monto']}"
+        contenido.append(linea)
+
+# Quitamos el \n inicial para evitar linea en blanco
+    contenido[0] = contenido[0].replace("\n","")
+    file.writelines(contenido)
+    file.close()
